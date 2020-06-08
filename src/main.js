@@ -32,6 +32,16 @@ Vue.use(dataV)
  * 扩展Vue
  */
 Vue.prototype.$eventBus = new Vue({}) // 全局事件总线
+// 全局异常捕获
+const errorHandler = (error, vm, info) => {
+  // alert('全局异常' + vm + error)
+  console.error('*****抛出全局异常:******' + info)
+  console.error(vm)
+  console.error(error)
+}
+Vue.config.errorHandler = errorHandler
+// 用于手动抛出异常
+Vue.prototype.$throw = (error) => errorHandler(error, this, '')
 
 Vue.config.productionTip = false
 Vue.config.performance = true

@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import NProgress from 'nprogress' // 进度条
+import 'nprogress/nprogress.css' // 这个样式必须引入
 Vue.use(Router)
+// 简单配置
+NProgress.inc(0.2)
+NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
 
-export default new Router({
+const router = new Router({
   routes: [
     // 欢迎页面
     // 访问路由时进行懒加载
@@ -27,6 +31,16 @@ export default new Router({
       name: 'first',
       component: () => import(/* webpackChunkName: "first" */ './views/first.vue')
     },
+    {
+      path: '/second',
+      name: 'second',
+      component: () => import(/* webpackChunkName: "first" */ './views/second.vue')
+    },
+    {
+      path: '/third',
+      name: 'third',
+      component: () => import(/* webpackChunkName: "first" */ './views/third.vue')
+    },
     // {
     //   path: '/load',
     //   name: 'load',
@@ -43,3 +57,12 @@ export default new Router({
     }
   ]
 })
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
+export default router

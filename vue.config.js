@@ -1,6 +1,5 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
-
 const path = require('path')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob-all')

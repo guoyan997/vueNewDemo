@@ -2,6 +2,7 @@
  * @description 接口
  */
 import axios from 'axios'
+import qs from 'qs'
 import { stringToDate } from './core/weapon'
 let HOST = process.env.VUE_APP_API_HOST || '' // 根据不同的环境，自动切换接口地址
 let HostUrl = HOST + 'requerstInterface/queryInterface/'
@@ -12,7 +13,7 @@ const axiosConfig = {
   baseURL: '',
   // 请求头信息
   headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
+    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
     'token': '123123',
     'IdentifyingCode': window.localStorage.getItem('IdentifyingCode')
   },
@@ -182,7 +183,7 @@ const API = {
     const configs = {
       ...axiosConfig,
       url,
-      data: params,
+      data: qs.stringify(params),
       ...options
     }
     return new Promise((resolve, reject) => {
@@ -192,6 +193,7 @@ const API = {
         })
         .catch(err => {
           reject(err)
+          this.$throw(err)
         })
     })
   },

@@ -39,6 +39,7 @@
           <base-chart :chartData=dataList8
                       :option="chartOption(dataList8)"></base-chart>
         </div> -->
+        <h1>这个是标题</h1>
         <div v-for="(item, index) in dataList"
              class="chart-main"
              :key=index>{{item}}</div>
@@ -89,6 +90,9 @@ export default {
     }
   },
   computed: {
+    abc () {
+      return this.userName
+    }
   },
   methods: {
     /**
@@ -181,6 +185,8 @@ export default {
       this.pullingUpEvent()
     })
     // this.bs.on('scroll', this.firstlevel)
+    // 测试异常和错误捕获
+    // console.log('****' + abc)
   },
   beforeDestroy () {
     // this.bs.off('scroll', this.firstlevel)
