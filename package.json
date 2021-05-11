@@ -19,7 +19,7 @@
     "echarts": "^4.2.0-rc.2",
     "element-ui": "^2.13.1",
     "interactjs": "^1.9.18",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "postcss-pxtorem": "^5.1.1",
